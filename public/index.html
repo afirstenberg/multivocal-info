@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multivocal</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/4.13.0/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/4.13.0/firebase-auth.js"></script>
+  <script defer src="/__/firebase/4.13.0/firebase-database.js"></script>
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
+
+  <style>
+    body { padding-top: 70px;}
+    .jumbotron h2 {
+      text-align: center;
+    }
+    .navbar-brand > img {
+      margin-top: -10px;
+    }
+    .navbar-brand img {
+      /*width: 40px;*/
+      height: 40px;
+    }
+    .navbar-right button {
+      padding: 0px;
+      border: 0px;
+      margin-top: -10px;
+      margin-bottom: -10px;
+      width: 191px;
+      height: 46px;
+    }
+    .legalese p {
+      font-size: 8px;
+      text-align: center;
+    }
+    .legalese img {
+      max-height: 45px;
+    }
+    .tall {
+      height: 100%;
+    }
+    .tall .panel {
+      height: 97%;
+    }
+    .panel-body iframe {
+      width: 100%;
+      border: 0;
+      height: 90%;
+    }
+  </style>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118013988-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118013988-1');
+  </script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <!--
+      <a class="navbar-brand" href="/">
+        <img src="img/ttsw/logo-small.jpg">
+      </a>
+      -->
+      <a class="navbar-brand" href="/">
+        <img alt="Multivocal" src="img/multivocal/multivocal-title.png"/>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="container"><div class="row">
+
+  <div class="tall hash hash-tos slide col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-10">
+            Terms of Service
+          </div>
+          <div class="col-xs-2">
+            <a href="#">Close</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <iframe src="tos.html" scrolling="yes"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="tall hash hash-privacy slide col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-xs-10">
+            Privacy Policy
+          </div>
+          <div class="col-xs-2">
+            <a href="#">Close</a>
+          </div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <iframe src="privacy.html" scrolling="yes"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        What is Multivocal?
+      </div>
+      <div class="panel-body">
+        <p>
+          Multivocal is a library that tries to bring a new approach to helping
+          you write webhooks for the Google Assistant (and, hopefully someday,
+          other voice agents and bots).
+        </p>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Where to get Multivocal
+      </div>
+      <div class="panel-body">
+        <p>
+          <a href="https://www.npmjs.com/package/multivocal">npm entry</a>
+        </p>
+        <p>
+          <a href="https://github.com/afirstenberg/multivocal">github</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Latest news
+      </div>
+      <div class="panel-body text-center">
+        <div id="latest-post"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-xs-12 col-md-6">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        How can I learn more?
+      </div>
+      <div class="panel-body">
+        <p>
+          <a href="https://github.com/afirstenberg/multivocal#multivocal">Readme</a>
+        </p>
+        <p>
+          More documentation soon
+        </p>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Are there examples?
+      </div>
+      <div class="panel-body">
+        <p>
+          <a href="https://github.com/afirstenberg/multivocal-hello">multivocal-hello</a><br/>
+          "Hello World" sample for Multivocal library
+        </p>
+        <p>
+          <a href="https://github.com/afirstenberg/multivocal-example-simple">multivocal-example-simple</a><br/>
+          A simple example for Multivocal demonstrating basic conversations and configuration
+        </p>
+        <p>
+          More examples soon
+        </p>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        More info...
+      </div>
+      <div class="panel-body">
+        <!--
+        <p>
+          Visit the
+          <a href="https://assistant.google.com/services/a/id/58e2aa9bfeb327b8?hl=en" target="_blank">
+            Google Assistant Directory entry
+          </a> for Multivocal Info.
+        </p>
+        -->
+        <p>
+          Make sure you read and understand our <a href="#privacy">privacy policy</a>.
+        </p>
+        <p>
+          The <a href="#tos">terms of service</a> explain our approach to running
+          the website and voice agent.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 legalese">
+    <p>
+      <img src="img/actions_for_google/XPM_BADGING_GoogleAssistant_HOR.png">
+    </p>
+    <p>
+      <i>Google</i>, <i>Google Home</i>, <i>Android</i>
+      and their logos are trademarks of Google Inc.
+      The Google Assistant logo is a trademark of Google Inc.
+      Use of these trademarks are subject to Google Permissions.
+    </p>
+    <p>
+      <i>iPhone</i> is a registered trademark of Apple, Inc.
+    </p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('data', snapshot => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      //
+
+      try {
+        let app = firebase.app();
+        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  </script>
+
+</div></div>
+
+<script src="js/hash.js"></script>
+<script src="js/client.js"></script>
+
+</body>
+</html>
