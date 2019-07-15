@@ -1,0 +1,27 @@
+<style>
+  a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+</style>
+<p style="text-align:center">
+  <b>Multivocal 0.12.0 now available</b>
+</p>
+<p>
+  The main update in this release is support for <i>postprocessing</i> - code
+  that will run after the reply is sent. This is particularly useful for
+  operations, such as database saves or logging, that don't need to take time
+  before the reply.
+</p>
+<p>
+  Also notable, tho largely internal:
+  <ul>
+    <li>
+      Record timing for various stages of processing. (And report these as part
+      of postprocessing by default.)
+    </li>
+    <li>
+      Performance improvements for configuration handling.
+    </li>
+  </ul>
+</p>
