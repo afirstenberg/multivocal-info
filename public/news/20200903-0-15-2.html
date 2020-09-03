@@ -1,0 +1,35 @@
+<style>
+  a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+</style>
+<p style="text-align:center">
+  <b>Multivocal 0.15.2 now available</b>
+</p>
+<p>
+  This release adds more support for the Actions Builder / Actions SDK
+  for the Google Assistant (Actions on Google v3) and introduces <i>very</i>
+  preliminary support for Dialogflow CX (Dialogflow v3).
+  Additional features supported are:
+<ul>
+  <li>
+    "Scenes" in Actions Builder and "Pages" in Dialogflow CS are generally
+    tracked in multivocal as "Nodes".
+  </li>
+  <li>
+    Nodes are now tracked as part of the session counter and session consecutive
+    environment values.
+  </li>
+  <li>
+    A new session environment value known as the "stack" will keep track of
+    the five most recent Node names.
+  </li>
+  <li>
+    You can set the "NextNode" environment setting to indicate the next Node
+    to transition to after this reply. There are also special values
+    to indicate to transition bacj to the current node, the previous node,
+    and so forth.
+  </li>
+</ul>
+</p>
