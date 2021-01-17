@@ -1,0 +1,77 @@
+<style>
+  a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+</style>
+<p style="text-align:center">
+  <b>Multivocal 0.16.0 now available</b>
+</p>
+<p>
+
+There have been a number of wide-ranging changes, with the broad goals of
+making templating easier, debugging easier, and generally "doing the right
+thing" either easier or the default. Some specifics:
+
+<ul>
+
+  <li>
+    SpeechMarkdown is now used as a core part of the templating system in
+    two ways:
+    <ul>
+      <li>
+        If providing just a string for the response, it is processed (by
+        default) through SpeechMarkdown to create the Text and Ssml values.
+      </li>
+      <li>
+        It can also be set as the Markdown attribute for the object and it
+        will set the Text and Ssml values if you don't also set them. This lets
+        you use Markdown to generate the Ssml (for example), but still provide
+        alternate text.
+      </li>
+    </ul>
+  </li>
+
+  <li>
+    The strangely named "flexiresponse" allows you to build values in the
+    configuration using similar templates to those you use for `Response`.
+    You can then reference or include them in the `Response` itself, making
+    it easier to build templates tailored for specific modes or platforms,
+    but which all use other templated or selected responses.
+  </li>
+
+  <li>
+    Templating can now add to a Debug object. This is available through
+    the "multivocal_debug" session variable. It is particularly useful
+    to be used as part of the new test framework available from Google,
+    so you can assert particular values set in the environment, rather than
+    needing to test a wide range of possible response strings.
+  </li>
+
+  <li>
+    Hostname is now set in the environment. This is useful for setting
+    the path for an HTML Page that needs to be referenced at the same
+    host URL as your webhook (a common thing to do with Firebase Hosting,
+    for example).
+  </li>
+
+  <li>
+    Requests coming from Actions Builder / SDK (AoG 3) are now validated
+    by default. The project name is loaded from Google Cloud / Fireabse
+    environment variables by default, and you can override this setting
+    if necessary. (You can also turn off this validation... but don't do that
+    unless you have a really good reason.) Thanks to Denis Valášek for his
+    insights that made this feature far easier to use.
+  </li>
+
+  <li>
+    There's a new configuration loader which loads from simpler key-value
+    pairs, rather than a more complete nested object hierarchy.
+  </li>
+
+</ul>
+
+Additionally, there have been several dependency updates, including moving
+from the <tt>request-promise-native</tt> package, which has been deprecated,
+to the <tt>axios</tt> package.
+</p>
