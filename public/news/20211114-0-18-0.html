@@ -1,0 +1,52 @@
+<style>
+  a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+</style>
+<p style="text-align:center">
+  <b>Multivocal 0.18.0 now available</b>
+</p>
+<p>
+  This release has been focused on support for multiple voices, now officially
+  in the SSML for Google Assistant. In particular:
+
+  <ul>
+    <li>
+      Updating <a href="https://speechmarkdown.org/">SpeechMarkdown</a> to
+      depend on version 2.0.0.
+    </li>
+    <li>
+      There is also enhanced SpeechMarkdown support, such that the Voices
+      environment object is passed to SpeechMarkdown as part of the configuration,
+      so the voices available through the [voice] markdown are set from multivocal.
+    </li>
+    <li>
+
+    </li>
+  </ul>
+
+  Documentation has been added to the readme, and there is also new
+  <a href="https://github.com/afirstenberg/multivocal-example-voice">example code</a>
+  to illustrate.
+</p>
+
+<p>
+  There are also minor changes, some meant to set the stage for future improvements,
+  including:
+  <ul>
+    <li>
+      More straighforward ways to calculate the platform versions.
+    </li>
+    <li>
+      Support for determining the Action name from the Intent, for platforms
+      that don't support the concept of Action.
+    </li>
+    <li>
+      Performance improvements, particularly in key validation.
+    </li>
+    <li>
+      Improvements in logging and timing analysis.
+    </li>
+  </ul>
+</p>
